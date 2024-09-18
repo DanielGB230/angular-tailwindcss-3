@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./output.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 40;
+        }
+
+        .sidebar_container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            z-index: 50;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+        }
+
+        .sidebar_container.show {
+            transform: translateX(0);
+        }
+
+        @media (min-width: 768px) {
+            .sidebar_container {
+                transform: none;
+                position: relative;
+            }
+        }
+
+        .main-content {
+            overflow-y: auto;
+            height: 100vh; /
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex">
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Barra lateral -->
+    <nav id="sidebar" class="sidebar_container w-64 h-screen flex flex-col border-r border-gray-500 bg-white text-black shadow-custom">
+        <button id="close-btn" class="block md:hidden absolute top-2 right-2 text-black material-symbols-outlined">close</button>
+        <ul class="px-4 py-2 text-base mt-4">
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">home</span>
+                <a href="" class="ml-1">Inicio</a>
+            </li>
+
+            <li class="title_sidebar py-2 font-bold"><span>Venta</span></li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">universal_currency_alt</span>
+                <a href="" class="ml-2">Vender un producto</a>
+            </li>
+            <li class="title_sidebar py-2 font-bold"><span>Administrador</span></li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">group</span>
+                <a href="" class="ml-2">Clientes</a>
+            </li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">groups</span>
+                <a href="" class="ml-2">Empleados</a>
+            </li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">engineering</span>
+                <a href="" class="ml-2">Proveedores</a>
+            </li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">inventory</span>
+                <a href="" class="ml-2">Productos</a>
+            </li>
+            <li class="title_sidebar py-2 font-bold"><span>Reportes</span></li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">real_estate_agent</span>
+                <a href="" class="ml-2">Ventas</a>
+            </li>
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">support_agent</span>
+                <a href="" class="ml-2">Servicio Técnico</a>
+            </li>
+        </ul>
+
+        <ul class="px-4 py-2 mt-auto">
+            <li class="flex items-center py-2 hover:bg-gray-300 rounded-lg">
+                <span class="material-symbols-outlined text-lg">logout</span>
+                <a href="#" class="ml-2">Cerrar sesión</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- ************************************************************************************************** -->
+
+    <!-- Contenido principal -->
+    <div class="bg-gray-300 w-full flex-1 flex flex-wrap items-start justify-center p-4 main-content">
+        <div class="flex-1 p-4">
+            <div class="flex items-center justify-between mb-4">
+                <button id="menu-btn" class="md:hidden bg-gray-300 text-black font-bold text-lg rounded-lg p-1 mr-6 flex items-center justify-center">
+                    <span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+                <header class="bg-white shadow-xl h-14 flex justify-end items-center px-4 py-2 rounded-2xl w-full">
+                    <ul class="flex items-center font-bold">
+                        <li class="flex items-center">
+                            <a href="" class="ml-2">Administrador</a>
+                            <span class="material-symbols-outlined">account_circle</span>
+                        </li>
+                    </ul>
+                </header>
+            </div>
+            
+            <div class="bg-white w-full p-4 border border-gray-200 rounded-2xl shadow-xl md:p-6 dark:border-gray-700">
+                <section class="flex justify-between items-center mb-4 border-b pb-2">
+                    <span class="text-lg font-semibold">SERVISIO TECNICO</span>
+                    <a href="nuevo-cliente.html" class="inline-flex items-center px-4 py-2 bg-gray-300 hover:bg-black rounded text-base font-medium hover:text-gray-100 transition duration-300">Nuevo Registro</a>
+                </section>
+               
+                <div class="flex flex-col">
+                    <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+                        <div class="py-1 inline-block min-w-full sm:px-2 lg:px-2">
+                            <div class="overflow-hidden">
+                                <table class="min-w-full">
+                                    <thead class="bg-white border-b">
+                                        <tr>
+                                            <th scope="col" class="text-[10px] font-medium text-gray-900 px-2 py-2 text-left">
+                                                PROBLEMA
+                                            </th>
+                                            <th scope="col" class="text-[10px] font-medium text-gray-900 px-3 py-2 text-left">
+                                                TECNICO
+                                            </th>
+                                            <th scope="col" class="text-[10px] font-medium text-gray-900 px-3 py-2 text-left">
+                                                UBICACION
+                                            </th>
+                                            <th scope="col" class="text-[10px] font-medium text-gray-900 px-2 py-2 text-left">
+                                                PRECIO
+                                            </th>
+                                            <th scope="col" class="text-[10px] font-medium text-gray-900 px-3 py-2 text-left">
+                                                ACCION
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-gray-100 border-b">
+                                            <td class="px-2 py-2 whitespace-nowrap text-xs font-medium text-gray-900">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-2 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                        </tr>
+                                        <tr class="bg-white border-b">
+                                            <td class="px-2 py-2 whitespace-nowrap text-xs font-medium text-gray-900">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-2 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                        </tr>
+                                        <tr class="bg-gray-100 border-b">
+                                            <td class="px-2 py-2 whitespace-nowrap text-xs font-medium text-gray-900">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-2 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                        </tr>
+                                        <tr class="bg-white border-b">
+                                            <td class="px-2 py-2 whitespace-nowrap text-xs font-medium text-gray-900">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-2 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                            <td class="text-xs text-gray-900 font-light px-3 py-2 whitespace-nowrap">...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
